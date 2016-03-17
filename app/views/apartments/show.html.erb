@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @apartment.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @apartment.longitude %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @apartment.address %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @apartment.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @apartment.contact %>
+</p>
+
+<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
+<%= link_to 'Back', apartments_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+});
+</script>
+
+<%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %>
