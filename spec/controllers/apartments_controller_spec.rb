@@ -53,9 +53,11 @@ RSpec.describe ApartmentsController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new apartment as @apartment" do
+    it "assigns a new apartment as @apartment with the current user referenced" do
+      current_person = Person.create! valid_attributes
       get :new, {}, valid_session
       expect(assigns(:apartment)).to be_a_new(Apartment)
+      expect(assigns(:apartment).person).to eq(current_person)
     end
   end
 
@@ -155,5 +157,6 @@ RSpec.describe ApartmentsController, type: :controller do
       expect(response).to redirect_to(apartments_url)
     end
   end
+
 
 end

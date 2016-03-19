@@ -7,4 +7,7 @@ class Apartment < ActiveRecord::Base
     size: { in: 0..10.megabytes }
 
     belongs_to :person
+
+    devise :omniauthable, :omniauth_providers => [:twitter]
+
 end

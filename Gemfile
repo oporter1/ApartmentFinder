@@ -5,6 +5,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'paperclip'
 gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'omniauth-twitter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'

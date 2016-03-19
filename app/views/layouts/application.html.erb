@@ -37,6 +37,7 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><%=link_to "Log in with Twitter", person_omniauth_authorize_path(:twitter) %> </li>
           <li><%=link_to "Log Out", destroy_person_session_path, method: :delete %> </li>
         </ul>
       </div>
